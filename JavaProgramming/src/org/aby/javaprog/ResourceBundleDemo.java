@@ -11,9 +11,11 @@ public class ResourceBundleDemo {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		Locale currentLocale = Locale.US;
+		String property_file_path = "org/aby/javaprog/ResourceExamples";
 		//ResourceExamples.properties file is placed inside the package
-		ResourceBundle bundle = ResourceBundle.getBundle("org/aby/javaprog/ResourceExamples");
-		ResourceBundle bundle_sp = ResourceBundle.getBundle("org/aby/javaprog/ResourceExamples", new Locale("sp"));
+		ResourceBundle bundle = ResourceBundle.getBundle(property_file_path, currentLocale);
+		ResourceBundle bundle_sp = ResourceBundle.getBundle(property_file_path, new Locale("sp"));
 		Enumeration<String> keys = bundle.getKeys();
 		while(keys.hasMoreElements()){
 			String key = (String)keys.nextElement();
