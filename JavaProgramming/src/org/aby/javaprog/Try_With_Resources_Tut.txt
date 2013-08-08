@@ -1,0 +1,22 @@
+Try-with-resources
+
+-new feature added in Java 7
+-resources opened (and declared) in try-with-resources statement are closed automatically, we do need to use 'finally' block anymore for closing resources
+-multiple resources can be opened
+
+try(resource_1 ; resource_2 ; ...){
+	//code to do something
+}catch(Exception_type exception_obj){
+	//handle the exception here
+}finally{
+	//stuff other than closing resources
+}
+
+-close() method of the 'resource' is called after execution(successful/failed) of try block and before catch's execution
+-resources are closed in right->left order
+-Prior to Java 7, the 'finally' block was used to close the resources
+-Not all resources can be opened in try-with-resources statement - only those which implement java.lang.AutoCloseable interface can be opened
+-You can use your own 'resource type' objects in try-with-resources statement provided they implement AutoCloseable interface
+-It is possible that try-with-resource statement might throw an exception and also the try block - the try-with-resources statement's exception 
+ will get suppressed - though they can be retrieved by Throwable.getSuppressed() method of exception object thrown by try block
+ -you can still write catch and finally block - they would function as usual
